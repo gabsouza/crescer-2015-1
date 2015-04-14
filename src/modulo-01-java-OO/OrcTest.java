@@ -49,7 +49,7 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaqueDuasVezes() {
-        Orc umOrc = new Orc("Comur");
+        Orc umOrc = new Orc("Comur I");
        
         umOrc.recebeAtaque();
         umOrc.recebeAtaque();
@@ -62,7 +62,7 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaqueCincoVezes() {
-        Orc umOrc = new Orc("Comur");
+        Orc umOrc = new Orc("Comur I");
         
         umOrc.recebeAtaque();
         umOrc.recebeAtaque();
@@ -78,7 +78,7 @@ public class OrcTest
     
     @Test
     public void orcFicaFeridoAoReceberAtaque() {
-        Orc umOrc = new Orc("Comur");
+        Orc umOrc = new Orc("Comur I");
 
         umOrc.recebeAtaque();
         
@@ -124,7 +124,7 @@ public class OrcTest
     @Test
     public void orcToStringAposReceberAtaque() {
 
-        Orc orc = new Orc("Comur");
+        Orc orc = new Orc("Comur I");
 
         orc.recebeAtaque();
         String resultadoObtido = orc.toString();
@@ -135,7 +135,7 @@ public class OrcTest
     
     @Test
     public void orcToStringAposReceberDozeAtaques() {
-        Orc umOrc = new Orc("Comur");
+        Orc umOrc = new Orc("Comur I");
         umOrc.recebeAtaque();
         umOrc.recebeAtaque();
         umOrc.recebeAtaque();
@@ -157,7 +157,7 @@ public class OrcTest
     @Test
     public void orcNasceComNomeInformado() {
         Orc umOrc;
-        String esperado = "Comur";
+        String esperado = "Comur I";
         umOrc = new Orc(esperado);
     
         String resultadoObtido = umOrc.getNome();
@@ -192,7 +192,7 @@ public class OrcTest
     
     @Test
     public void orcMorreAposDozeFlechadas() {
-        Orc umOrc = new Orc("Comur");
+        Orc umOrc = new Orc("Comur I");
         Status esperado = Status.MORTO;
         
         umOrc.recebeAtaque();
@@ -214,7 +214,7 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaqueComNumeroGeradoMenorQueZero() {
-        Orc orc = new Orc("Comur");
+        Orc orc = new Orc("Comu");
         orc.recebeAtaque();
         
         int vidaEsperada = 110;
@@ -226,7 +226,7 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaqueComNumeroGeradoEntre0e100() {
-        Orc orc = new Orc("Comur"); // para somar 65 ao número gerado
+        Orc orc = new Orc("Comur I"); // para somar 65 ao número gerado
         orc.setExperiencia(1); // ímpar e menor que 2 para poder manter entre 0 e 100
         orc.recebeAtaque();
         
@@ -239,7 +239,7 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaqueNormal() {
-        Orc orc = new Orc("Comur"); // para somar 65 ao número gerado e elevar ao cubo
+        Orc orc = new Orc("Comur I1"); // para somar 65 ao número gerado e elevar ao cubo
         orc.recebeAtaque();
         
         int vidaEsperada = 100;
