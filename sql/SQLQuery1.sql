@@ -82,3 +82,57 @@ WHERE nome = 'Uberlândia';
 SELECT idcidade AS [ID Cidade], nome
 FROM Cidade
 WHERE UF = 'RS';
+
+update associado
+set idcidade = 1
+where idassociado = 1;
+
+update associado
+set idcidade = 32
+where idassociado = 3;
+
+
+Select COUNT(DISTINCT Cargo) as [Total de Cargos]
+From Empregado
+
+SELECT idDepartamento,
+	   sum(salario) AS soma,
+	   max(salario) AS maximo,
+	   min(salario) AS minimo
+FROM empregado
+GROUP BY idDepartamento;
+
+
+SELECT NomeEmpregado,
+	   (Salario + Comissao) as [Total salario A],
+       (Salario + (ISNULL(Comissao,0))) as [Total salario B],
+       Comissao
+From Empregado;
+
+SELECT IDAssociado,
+	   Nome,
+CASE WHEN sexo = 'F' THEN 'Feminino'
+	 WHEN sexo = 'M' THEN 'Masculino'
+	 ELSE 'sei lá'
+	END Genero
+FROM associado;
+
+SELECT SUBSTRING(nome, 1, CHARINDEX(' ', nome)-1) AS [Primeiro Nome]
+FROM Associado
+
+SELECT nome, DATEDIFF (YEAR, dataNascimento, GETDATE())
+FROM Associado
+
+
+SELECT NomeEmpregado, DATEDIFF (MONTH, dataAdmissao, '31/12/2000') AS [Meses Trabalhados]
+FROM Empregado 
+WHERE dataAdmissao between '01/05/1980' and '20/01/1982' 
+
+SELECT TOP 1 cargo AS [Cargo com mais empregados]
+FROM Empregado
+
+SELECT TOP 1 nome AS [Associado com maior nome]
+FROM Associado
+ORDER BY LEN(nome) DESC;
+
+
