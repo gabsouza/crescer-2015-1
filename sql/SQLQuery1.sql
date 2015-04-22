@@ -142,7 +142,7 @@ FROM Associado
 ORDER BY LEN(nome) DESC;
 
 -- SET LENGUAGE Portuguese
---6  Perguntar sobre a data
+--6
 SELECT nome, 
 	  CONVERT (varchar(30), DATEADD (YEAR, 50, dataNascimento), 103) AS [50 anos em],
 	  DATENAME(weekday, DATEADD (YEAR, 50, dataNascimento)) AS [Dia da semana] 
@@ -173,3 +173,61 @@ INSERT INTO CopiaCidade (IDCidade, nome, UF)
 SELECT UF, nome, MIN(IDCidade) AS [Menor IDCidade]
 FROM Cidade
 GROUP BY nome, UF
+
+
+-- Executando exemplos
+
+SELECT a.Nome AS Associado, 
+	   c.Nome AS NomeCidade
+From Associado a
+INNER JOIN Cidade c ON c.IDCidade = a.IDCidade
+
+SELECT e.IDEmpregado, 
+	   e.NomeEmpregado,
+	   d.NomeDepartamento
+FROM Empregado e
+INNER JOIN Departamento d on d.IDDepartamento = e.IDDepartamento
+
+SELECT e.IDEmpregado, e.NomeEmpregado AS [Nome Empregado], e.IDGerente, g.NomeEmpregado AS nomeGerente
+FROM Empregado e
+INNER JOIN Empregado g ON e.IDGerente = g.IDEmpregado
+
+Select a.IDAssociado,
+a.Nome,
+a.IDCidade IDCidadeEmp,
+c.IDCidade,
+c.Nome
+From Associado a, Cidade c
+go
+
+-- Exercícios 
+
+update associado
+set idcidade = 1
+where idassociado = 1;
+
+update associado
+set idcidade = 32
+where idassociado = 3;
+
+-- 1 Selecione o nome do empregado e nome do departamento que cada um está associado.
+
+SELECT e.nomeEmpregado, d.nomeDepartamento
+FROM Empregado e
+JOIN Departamento d ON d.IDDepartamento = e.IDDepartamento
+
+-- 2 Exibir o nome do associado e sua cidade, exibir também associados sem Cidade relacionada.
+
+SELECT a.nome, c.nome
+FROM Associado a
+LEFT JOIN Cidade c ON a.IDCidade = c.IDCidade
+
+-- 3 Lista os estados (UF) e total de cidades que não possuem associados relacionados 
+-- (dica: pode ser utilizado count + group by + exists).
+
+SELECT c.UF, COUNT (1) AS Cidade
+FROM Cidade c
+WHERE NOT EXISTS(Select 1
+FROM Associado a
+WHERE a.IDCidade = c.IDCidade)
+GROUP BY UF
