@@ -117,22 +117,59 @@ CASE WHEN sexo = 'F' THEN 'Feminino'
 	END Genero
 FROM associado;
 
+--1
 SELECT SUBSTRING(nome, 1, CHARINDEX(' ', nome)-1) AS [Primeiro Nome]
 FROM Associado
 
-SELECT nome, DATEDIFF (YEAR, dataNascimento, GETDATE())
+--2
+SELECT nome, DATEDIFF (YEAR, dataNascimento, GETDATE()) idade --arredondamento
 FROM Associado
 
-
-SELECT NomeEmpregado, DATEDIFF (MONTH, dataAdmissao, '31/12/2000') AS [Meses Trabalhados]
+--3
+SELECT NomeEmpregado, DATEDIFF (MONTH, dataAdmissao, CONVERT (DateTime, '31/12/2000', 103)) AS [Meses Trabalhados]
 FROM Empregado 
-WHERE dataAdmissao between '01/05/1980' and '20/01/1982' 
+WHERE dataAdmissao between CONVERT (DateTime, '01/05/1980', 103) and CONVERT(DateTime, '20/01/1982', 103)
 
-SELECT TOP 1 cargo AS [Cargo com mais empregados]
+--4
+SELECT TOP 1 WITH TIES cargo, COUNT(1) AS [Cargo com mais empregados]
 FROM Empregado
+GROUP BY Cargo
+ORDER BY [Cargo com mais empregados] desc;
 
+--5
 SELECT TOP 1 nome AS [Associado com maior nome]
 FROM Associado
 ORDER BY LEN(nome) DESC;
 
+-- SET LENGUAGE Portuguese
+--6  Perguntar sobre a data
+SELECT nome, 
+	  CONVERT (varchar(30), DATEADD (YEAR, 50, dataNascimento), 103) AS [50 anos em],
+	  DATENAME(weekday, DATEADD (YEAR, 50, dataNascimento)) AS [Dia da semana] 
+FROM Associado
 
+-- 7
+SELECT UF, COUNT(1) AS [Quantidade de Cidade]
+FROM Cidade
+GROUP BY UF
+ORDER BY UF ASC
+
+--8
+SELECT UF, nome, COUNT(1) AS Total
+FROM Cidade
+GROUP BY nome, UF
+HAVING COUNT(1) > 1
+ORDER BY UF
+
+--9
+SELECT ISNULL (MAX(IDAssociado), 0)+1 AS [Proximo ID]
+From Associado;
+
+--10
+DELETE FROM CopiaCidade;
+
+INSERT INTO CopiaCidade (IDCidade, nome, UF)
+
+SELECT UF, nome, MIN(IDCidade) AS [Menor IDCidade]
+FROM Cidade
+GROUP BY nome, UF
