@@ -231,3 +231,13 @@ WHERE NOT EXISTS(Select 1
 FROM Associado a
 WHERE a.IDCidade = c.IDCidade)
 GROUP BY UF
+
+-- 4 Faça uma consulta que liste o nome do associado, o nome da cidade, e uma coluna que indique se a cidade 
+-- é da região SUL (RS, SC, PR), se for imprimir *** (3 asteriscos), senão imprimir nulo.
+
+SELECT a.Nome, c.Nome AS [Nome Cidade]
+FROM Associado a, cidade c
+INNER JOIN (SELECT IDCidade, ('***') AS Nome
+FROM Cidade
+WHERE UF IN ('SC', 'PR', 'RS'))as cidade
+ON c.IDCidade = a.IDCidade);
