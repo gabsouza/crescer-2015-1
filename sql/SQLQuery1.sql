@@ -174,7 +174,70 @@ SELECT UF, nome, MIN(IDCidade) AS [Menor IDCidade]
 FROM Cidade
 GROUP BY nome, UF
 
+-- 11
 
+UPDATE Cidade
+SET nome = '*' + nome
+WHERE nome IN (SELECT nome 
+				FROM Cidade
+				GROUP BY nome, uf
+				HAVING COUNT(1) > 1
+				) 
+
+SELECT * FROM Cidade ORDER BY nome;
+
+-- Conversão para concatenar, exemplo
+SELECT '123' + CAST(23 AS VARCHAR(10))
+
+-- 12
+SELECT nome,
+	   CASE sexo
+		WHEN 'M' THEN 'Masculino'
+		WHEN 'F' THEN 'Feminino'
+		ELSE 'Outro'
+	   END Genero
+FROM Associado;
+
+-- 13 
+SELECT nomeEmpregado, salario,
+		CASE WHEN salario BETWEEN 1164.01 AND 2326 THEN (Salario*0.15)
+			 WHEN salario > 2326 THEN (Salario*0.275)
+			 ELSE 0
+		END [Desconto IR]
+FROM Empregado
+
+-- 14
+Begin transaction;
+
+DELETE FROM Cidade
+WHERE IDCidade IN (SELECT MAX(IDCidade)
+				   FROM Cidade
+				   GROUP BY nome, uf
+				   HAVING COUNT(1) > 1)
+
+SELECT MAX (IDCidade) [Maior IDCidade Duplicada]
+FROM Cidade
+GROUP BY Nome, uf
+HAVING COUNT(1) > 1
+
+SELECT nome, uf
+FROM Cidade
+GROUP BY nome, uf
+HAVING COUNT(1) > 1
+
+COMMIT
+
+-- 15 
+
+-- Regra de restrição
+ALTER TABLE Cidade
+	ADD CONSTRAINT UK_Cidade_Nome_UF 
+	UNIQUE (Nome, UF)
+
+INSERT INTO Cidade (IDCidade, Nome, UF) VALUES (1000, 'Sapucaia', 'RJ')
+
+SELECT * FROM Cidade
+ 
 -- Executando exemplos
 
 SELECT a.Nome AS Associado, 
@@ -235,9 +298,19 @@ GROUP BY UF
 -- 4 Faça uma consulta que liste o nome do associado, o nome da cidade, e uma coluna que indique se a cidade 
 -- é da região SUL (RS, SC, PR), se for imprimir *** (3 asteriscos), senão imprimir nulo.
 
-SELECT a.Nome, c.Nome AS [Nome Cidade]
-FROM Associado a, cidade c
-INNER JOIN (SELECT IDCidade, ('***') AS Nome
-FROM Cidade
-WHERE UF IN ('SC', 'PR', 'RS'))as cidade
-ON c.IDCidade = a.IDCidade);
+SELECT a.Nome, c.Nome AS [Nome Cidade],
+		CASE c.UF 
+		  WHEN 'RS' THEN '***'
+		  WHEN 'SC' THEN '***'
+		  WHEN 'PR' THEN '***'
+		  ELSE null
+		END [Região Sul]
+FROM Associado a
+LEFT JOIN Cidade c ON c.IDCidade = a.IDCidade
+
+
+-- 5 Liste o nome do empregado, o nome do gerente, e o departamento de cada um.
+
+SELECT e.nomeEmpregado, e.IDDepartamento, g.nomeEmpregado, g.IDDepartamento
+FROM Empregado e
+INNER JOIN Empregado g ON e.IDGerente = g.IDEmpregado;
