@@ -338,7 +338,33 @@ Begin transaction;
 SELECT * INTO CopiaEmpregado
 FROM Empregado
 
-ALTER TABLE CopiaEmpregado ALTER COLUMN salario 
+UPDATE Empregado
+SET salario += (salario*0.145)
+WHERE IDDepartamento in (10)
+
+SELECT nomeEmpregado, salario, IDDepartamento
+FROM Empregado
+
+SELECT nomeEmpregado, salario, IDDepartamento
+FROM CopiaEmpregado
 
 COMMIT
 ROLLBACK
+
+-- 7 Liste a diferença que representará o reajuste aplicado no item anterior no somatório dos salários de 
+-- todos os empregados.
+
+
+-- 8 Liste o departamento que possui o empregado de maior salário. (Nao esta pronto)
+
+SELECT TOP 1 WITH TIES d.IDDepartamento, e.nomeEmpregado, e.salario
+FROM Empregado e
+JOIN Departamento d ON e.IDDepartamento = d.IDDepartamento
+ORDER BY Salario DESC
+
+SELECT e.salario, d.IDDepartamento
+FROM Empregado e
+JOIN Departamento d ON e.IDDepartamento = d.IDDepartamento
+
+-- 9 Faça uma consulta para exibir o nome de cada associado e sua cidade e juntamente com os empregados (nome)
+-- e a cidade (localidade) de seu departamento, isto deve ser exibido em uma consulta.
