@@ -281,36 +281,64 @@ JOIN Departamento d ON d.IDDepartamento = e.IDDepartamento
 
 -- 2 Exibir o nome do associado e sua cidade, exibir também associados sem Cidade relacionada.
 
-SELECT a.nome, c.nome
+SELECT a.nome AS [Nome do Associado], c.nome AS Cidade
 FROM Associado a
 LEFT JOIN Cidade c ON a.IDCidade = c.IDCidade
+
+-- Tirar o *
+BEGIN TRANSACTION
+GO
+
+UPDATE Cidade
+SET Nome = REPLACE(Nome, '*', ' ')
+WHERE Nome LIKE '*%'
+
+SELECT IDCidade, nome, REPLACE(Nome, '*', '') Novo_Nome
+FROM Cidade
+
+
 
 -- 3 Lista os estados (UF) e total de cidades que não possuem associados relacionados 
 -- (dica: pode ser utilizado count + group by + exists).
 
-SELECT c.UF, COUNT (1) AS Cidade
+SELECT c.UF, COUNT (1) AS [Total de Cidade]
 FROM Cidade c
-WHERE NOT EXISTS(Select 1
-FROM Associado a
-WHERE a.IDCidade = c.IDCidade)
-GROUP BY UF
+WHERE NOT EXISTS(SELECT 1
+				FROM Associado a
+				WHERE a.IDCidade = c.IDCidade)
+GROUP BY c.UF
 
 -- 4 Faça uma consulta que liste o nome do associado, o nome da cidade, e uma coluna que indique se a cidade 
 -- é da região SUL (RS, SC, PR), se for imprimir *** (3 asteriscos), senão imprimir nulo.
 
+--- Criando com veiw (view é apenas uma forma de salvar um comando sql para reutilizar ele.
+CREATE VIEW vw_Cidade_Região AS
 SELECT a.Nome, c.Nome AS [Nome Cidade],
-		CASE c.UF 
-		  WHEN 'RS' THEN '***'
-		  WHEN 'SC' THEN '***'
-		  WHEN 'PR' THEN '***'
+		CASE WHEN c.UF IN ('RS', 'SC', 'PR') THEN '***'
 		  ELSE null
 		END [Região Sul]
 FROM Associado a
 LEFT JOIN Cidade c ON c.IDCidade = a.IDCidade
 
+-- utilizando a view
+SELECT * FROM vw_Cidade_Região
+
+COMMIT
 
 -- 5 Liste o nome do empregado, o nome do gerente, e o departamento de cada um.
 
 SELECT e.nomeEmpregado, e.IDDepartamento, g.nomeEmpregado, g.IDDepartamento
 FROM Empregado e
 INNER JOIN Empregado g ON e.IDGerente = g.IDEmpregado;
+
+-- 6 Faça uma cópia da tabela Empregado e altere o salário de todos os empregados que o departamento fique na 
+-- localidade de SAO PAULO, faça um reajuste de 14,5%
+Begin transaction;
+
+SELECT * INTO CopiaEmpregado
+FROM Empregado
+
+ALTER TABLE CopiaEmpregado ALTER COLUMN salario 
+
+COMMIT
+ROLLBACK
