@@ -366,5 +366,4 @@ SELECT e.salario, d.IDDepartamento
 FROM Empregado e
 JOIN Departamento d ON e.IDDepartamento = d.IDDepartamento
 
--- 9 Faça uma consulta para exibir o nome de cada associado e sua cidade e juntamente com os empregados (nome)
--- e a cidade (localidade) de seu departamento, isto deve ser exibido em uma consulta.
+-- Tem mais exercícios para serem feitos!!!
