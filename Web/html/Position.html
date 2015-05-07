@@ -1,0 +1,67 @@
+<!doctype>
+
+<html>
+
+	<head>
+		<title> Position </title>
+		<meta charset = "utf-8">
+
+	</head>
+		<style>
+		
+			.relative {
+				position: relative; 
+				top 10px;
+			}
+			
+			.fixed {
+				position: fixed;
+				top: 50px;
+				left: 700px;
+			}
+			
+			.absolute {
+				position: absolute; 
+				top: 70px;
+				right: -70px;
+			  
+			 }
+			  
+		    .rectangle {
+				position: relative;
+				top:100px;
+				width:450px; 
+				height:150px;
+				background: blue;
+				
+			}
+			
+			.img {
+				widht:500;
+				height: 351;
+			
+			}
+			
+			
+		</style>
+	<body>
+	
+
+		<div class = "relative"> 
+			<img src="file:///C:/Users/projetocrescer/Desktop/cwi/imagens/Siberian-Husky-2.jpg">
+				
+		</div>
+		
+		<div class = "fixed"> 
+			<img src="file:///C:/Users/projetocrescer/Desktop/cwi/imagens/Siberian-Husky-2.jpg">
+				
+		</div>
+		
+		<div class = "rectangle">
+			<div class = "absolute">
+				<img src="file:///C:/Users/projetocrescer/Desktop/cwi/imagens/Siberian-Husky-2.jpg">
+			</div>
+		</div>
+	</body>
+	
+</html>
