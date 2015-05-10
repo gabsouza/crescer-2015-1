@@ -40,7 +40,6 @@ var manchester = {
     
     }
     );
-        somssss
     }
 
     function ordenarPorNacionais (array){
