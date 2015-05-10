@@ -1,5 +1,5 @@
 
--- 1 
+// 1
 var chelsea = {
   nome: 'Chelsea Football Club',
   titulos: [
@@ -8,7 +8,6 @@ var chelsea = {
     { desc: 'Mundiais', qtd: 0 }
   ]
 };
-
 var arsenal = {
   nome: 'Arsenal Football Club',
   titulos: [
@@ -17,7 +16,6 @@ var arsenal = {
     { desc: 'Mundiais', qtd: 0 }
   ]
 };
-
 var liverpool = {
   nome: 'Liverpool Football Club',
   titulos: [
@@ -26,7 +24,6 @@ var liverpool = {
     { desc: 'Mundiais', qtd: 4 }
   ]
 };
-
 var manchester = {
   nome: 'Manchester United Football Club',
   titulos: [
@@ -35,44 +32,63 @@ var manchester = {
     { desc: 'Mundiais', qtd: 2 }
   ]
 };
+    var array = [chelsea, arsenal, liverpool, manchester];
+// 2 
+    function ordenarPor (array, indice){
+        array.sort(function(a, b) { 
+            return a.titulos[indice].qtd < b.titulos[indice].qtd;
+    
+    }
+    );
+        somssss
+    }
 
-var array = [chelsea, arsenal, liverpool, manchester];
+    function ordenarPorNacionais (array){
+      return ordenarPor(array, 0);
+    }
 
+    function ordenarPorContinentais (array){
+      return ordenarPor(array, 1);
+    }
 
--- 2a
+    function ordenarPorMundiais (array){
+      return ordenarPor(array, 2);
+    }
+//3
+    function somatorio (array, indice) {
+      var soma = 0;
+       array.map(function(a) { 
+         soma = soma + a.titulos[indice].qtd;
+    });
+       return soma;
+    }
+    
+    function somarPorNacionais(array){
+     return somatorio (array, 0);
+    }
 
-function ordenaPorNacionais(array){
+    function somarPorContinentais (array){
+     return somatorio (array, 1);
+    }
 
-	array.sort(function(a,b) { 
-		return a.titulos[0].qtd < b.titulos[0].qtd;
-		
-	});
-	
-	return array;
-}  
+    function somarPorMundiais (array){
+     return somatorio (array, 2);
+    }
 
--- 2b  
+// 4
 
-function ordenaPorContinentais(array){
+    function apenasOsMelhores (array) {
+     return array.filter(function(a) {
+      return a.titulos[0].qtd > 18;
+    });
+    }
 
-	array.sort(function(a,b) { 
-		return a.titulos[1].qtd < b.titulos[1].qtd;
-		
-	});
-	
-	return array;
-}    
+// 5 
 
--- 2c
+    function apenasOsMelhoresParaJSON (array) {
+      return JSON.stringify(apenasOsMelhores(array));
+    }
 
-function ordenaPorNacionais(array){
-
-	array.sort(function(a,b) { 
-		return a.titulos[2].qtd < b.titulos[2].qtd;
-		
-	});
-	
-	return array;
-}   
-
--- 3  
+     function apenasOsMelhoresRecebendoJSON(string){
+      return JSON.parse(apenasOsMelhoresParaJSON (string));
+    }
