@@ -1,0 +1,20 @@
+package Filmator;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Filme {
+	
+ Scanner ler = new Scanner(System.in);
+	 
+	 ArrayList<Ator> elenco = new ArrayList<>();
+	 
+	 public void AdicionaElenco(Ator ator){
+		 elenco.add(ator); 
+	 }
+
+	public String  toString(){
+		return null;
+		
+	}
+}

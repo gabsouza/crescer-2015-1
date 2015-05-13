@@ -1,0 +1,12 @@
+package Test;
+
+import org.junit.Test;
+
+public class TesteAtor {
+	
+	@Test
+	public void TestToString(){
+		
+	}
+
+}
