@@ -1,0 +1,12 @@
+package Listator;
+
+import javax.swing.JOptionPane;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		String empresa = "CWI Software";
+		JOptionPane.showMessageDialog(null, empresa.toLowerCase());
+	
+	}
+}
