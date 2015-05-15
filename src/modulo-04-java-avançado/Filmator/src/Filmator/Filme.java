@@ -49,5 +49,9 @@ public class Filme {
 	 public Genero getGenero(){
 		return this.genero;
 	 }
+	 
+	 public List<Ator> getElenco (){
+		 return this.elenco;
+	 }
 	
 }

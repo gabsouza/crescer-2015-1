@@ -1,0 +1,23 @@
+package Test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import Filmator.Filme;
+import Filmator.Genero;
+
+public class TestFilme {
+	
+	@Test
+	public void TestToString (){
+		String tituloEsperado = "Avengers";
+		Genero generoEsperado = Genero.ACAO;
+		String mensagemEsperada = "Titulo: Avengers Genero: Acao";
+		Filme filme = new Filme(tituloEsperado, generoEsperado);
+		assertEquals (mensagemEsperada, filme.toString());
+		assertEquals(tituloEsperado, filme.getTitulo());
+		assertEquals(generoEsperado, filme.getGenero());
+	}
+	
+}
