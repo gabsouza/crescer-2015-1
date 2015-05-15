@@ -2,3 +2,8 @@
 *.class
 doc
 *.ctxt
+*.dat
+*.json
+*.xml
+*.prefs
+*.txt

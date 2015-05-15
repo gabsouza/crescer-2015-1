@@ -30,9 +30,7 @@ public class ElfoTest
     
     @Test
     public void ElfoNasceComNomeNulo(){
-        String nomeEsperado = null;
-        Elfo elfo = new Elfo (nomeEsperado);
-        assertEquals(nomeEsperado, elfo.getNome());
+       
     }
     
     @Test
