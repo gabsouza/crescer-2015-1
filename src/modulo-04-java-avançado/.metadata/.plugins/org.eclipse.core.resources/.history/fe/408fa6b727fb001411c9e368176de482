@@ -17,6 +17,9 @@ public class TesteAtor {
 		 	assertEquals (mensagemEsperada, ator.toString());
 	        assertEquals(nomeEsperado, ator.getNome());
 	        assertEquals(idadeEsperada, ator.getIdade());
+		
+		
+		
 	}
 	
 	@Test

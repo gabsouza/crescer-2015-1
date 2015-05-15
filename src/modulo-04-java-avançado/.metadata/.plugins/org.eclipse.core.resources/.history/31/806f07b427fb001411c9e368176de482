@@ -7,19 +7,8 @@ public class Filme {
 	
  Scanner ler = new Scanner(System.in);
 	 
- 	 private String titulo;
-	 private ArrayList<Ator> elenco = new ArrayList<>();
-	 private Genero genero;
+	 ArrayList<Ator> elenco = new ArrayList<>();
 	 
-	 public Filme (String titulo){
-		 this.titulo = titulo;
-	 }
-	 
-	 public Filme (String titulo, Genero genero){
-		 this.titulo = titulo;
-		 this.genero = genero;
-	 }
-
 	 public void AdicionaElenco(Ator ator){
 		 elenco.add(ator); 
 	 }
@@ -38,6 +27,7 @@ public class Filme {
 		}	
 		
 		return elencoNovo;
+		
 	}
 	
 }

@@ -1,0 +1,7 @@
+package Filmator;
+
+public enum Genero {
+
+	ACAO, ANIMACAO, AVENTURA, COMEDIA, DRAMA, FAROESTE, MUSICAIS, ROMANCE, SUSPENSE, 
+	TERROR, TRASH
+}
