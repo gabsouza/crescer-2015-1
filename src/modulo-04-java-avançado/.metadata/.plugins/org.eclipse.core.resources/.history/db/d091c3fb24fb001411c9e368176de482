@@ -7,12 +7,7 @@ public class Ator {
 	private int idade;
 	
 	public String toString(){
-		
-		String mensagem = String.format("Nome: %s Idade: %d",
-				this.nome,
-				this.idade
-				);
-		return mensagem;
+		return "Nome: " + this.nome + " Idade: " + this.idade;
 	}
 	
 	public  Ator (String nome){
