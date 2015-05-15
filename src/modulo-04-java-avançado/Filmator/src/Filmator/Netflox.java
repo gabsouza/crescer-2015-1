@@ -1,15 +1,18 @@
 package Filmator;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Netflox {
 	
-	ArrayList<Filme> ListaDeFilmes = new ArrayList<>();
+	private Map<Genero, Integer> estatisticas = new HashMap<Genero, Integer>();
 	
 	public void reproduzirFilme(Filme filme){
-		
+		System.out.println("Reproduzindo " +  filme.getTitulo());
 	}
 	
-	
+	public void gerarRelatorio(){
+		
+	}
 
 }

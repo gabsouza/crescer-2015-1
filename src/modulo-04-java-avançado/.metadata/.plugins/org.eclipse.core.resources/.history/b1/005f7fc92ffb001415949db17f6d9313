@@ -5,11 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import Filmator.Filme;
+import Filmator.Genero;
 
 public class TestFilme {
 	
 	@Test
-	public void TesteToString (){
+	public void TestToString (){
 		String tituloEsperado = "Avengers";
 		String mensagemEsperada = "Titulo: Avengers";
 		Filme filme = new Filme(tituloEsperado);
@@ -17,10 +18,4 @@ public class TestFilme {
 		assertEquals(tituloEsperado, filme.getTitulo());
 	}
 	
-	@Test
-	public void TesteFilme(){
-		String tituloEsperado = "Avengers";
-		Filme filme = new Filme(tituloEsperado);
-		assertEquals (tituloEsperado, filme.getTitulo());
-	}
 }
