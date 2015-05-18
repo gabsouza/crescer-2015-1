@@ -42,4 +42,7 @@ public class TestFilme {
 		
 		assertEquals (ator, filme.getElenco().get(0));
 	}
+	
+		assertEquals("Tamanho do elenco de um novo filme deve ser zero", 1, filme.getElenco().size());
+	}
 }
