@@ -7,6 +7,11 @@ public class Livro implements LivroReceitas {
 	
 	private List<Receita> receitas = new ArrayList<>();
 
+	
+	public Livro (){
+		
+	}
+	
 	@Override
 	public void inserir(Receita receita) {
 		if (validaNome(receita.getNome(), receita)){
@@ -17,7 +22,7 @@ public class Livro implements LivroReceitas {
 	
 	public boolean validaNome (String nome, Receita receita){
 		if (receita != null){
-			if (receita.getNome() != null && receita.getNome().trim().equals("") && receita.getNome() != null){
+			if (receita.getNome() != null && !receita.getNome().trim().equals("")){
 				return true;
 			} else {
 				return false;

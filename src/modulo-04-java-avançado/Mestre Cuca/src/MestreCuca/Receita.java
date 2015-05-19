@@ -5,14 +5,25 @@ import java.util.List;
 public class Receita {
 
 	private String nome;
-	private List<Ingrediente> ingredientes = new ArrayList<>();
+	private List<IngredienteReceita> ingredientes = new ArrayList<>();
 	private List<Instrucao> instrucao = new ArrayList<>();
+	
+	
+	public Receita (String nome, List<IngredienteReceita> ingredientes, List<Instrucao> instrucao){
+		this.nome = nome;
+		this.ingredientes = ingredientes;
+		this.instrucao = instrucao;
+	}
+	
+	public Receita (String nome){
+		this.nome = nome;
+	}
 	
 	public String getNome(){
 		return nome;
 	}
 	
-	public List<Ingrediente> getIngredientes(){
+	public List<IngredienteReceita> getIngredientes(){
 		return ingredientes;
 	}
 	
