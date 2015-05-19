@@ -9,15 +9,15 @@ public class Livro implements LivroReceitas {
 
 	@Override
 	public void inserir(Receita receita) {
-		if (validaNome(receita, receita)){
+		if (validaNome(receita.getNome(), receita)){
 			receitas.add(receita);
 		}
 		
 	}
 	
-	public boolean validaNome (Receita nome, Receita receita){
+	public boolean validaNome (String nome, Receita receita){
 		if (receita != null){
-			if (nome.getNome() != null && nome.getNome().trim().equals("") && nome.getNome() != null){
+			if (receita.getNome() != null && receita.getNome().trim().equals("") && receita.getNome() != null){
 				return true;
 			} else {
 				return false;
@@ -30,20 +30,27 @@ public class Livro implements LivroReceitas {
 
 	@Override
 	public void atualizar(String nome, Receita receitaAtualizada) {
-		// TODO Auto-generated method stub
+		if (validaNome(nome, receitaAtualizada)){
+			excluir(nome);
+			receitas.add(receitaAtualizada);
+		}
 		
 	}
 
 	@Override
 	public void excluir(String nome) {
-		
+		try {
+			Receita excluirReceita = buscaReceitaPeloNome(nome);
+			this.receitas.remove(excluirReceita);
+		} catch (ReceitaNaoEncontradaExcepcion e){
+			System.out.println(e);
+		}
 		
 	}
 
 	@Override
 	public List<Receita> getTodasReceitas() {
-		// TODO Auto-generated method stub
-		return null;
+		return receitas;
 	}
 
 	@Override
@@ -55,12 +62,11 @@ public class Livro implements LivroReceitas {
 				}
 			}
 		}
-		catch (ReceitaNaoEncontradaException e){
+		catch (ReceitaNaoEncontradaExcepcion e){
 			System.out.println(e);
 			return null;
 		}
 				return null;
-			} else return null;
 	}
 
 }
