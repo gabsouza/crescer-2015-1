@@ -49,7 +49,7 @@ public class TestLivro {
 		assertEquals(receita, livro.getTodasReceitas().get(0) );
 	}
 	
-	@Test // não esta pronto
+	@Test
 	public void testeAtualizar() throws Exception{
 		Instrucao instrucao1 = new Instrucao("Misture tudo");
 		Instrucao instrucao2 = new Instrucao("Bata a massa");

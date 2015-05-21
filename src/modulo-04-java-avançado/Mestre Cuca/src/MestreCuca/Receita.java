@@ -16,6 +16,10 @@ public class Receita {
 		this.instrucao = instrucao;
 	}
 	
+	public Receita (String nome){
+		this.nome = nome;
+	}
+	
 	public String getNome(){
 		return nome;
 	}
