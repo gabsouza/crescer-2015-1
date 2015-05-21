@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Livro implements LivroReceitas {
 	private List<Receita> receitas = new ArrayList<Receita>();
+	private double valorTotalReceita;
 
 	@Override
 	public void inserir(Receita receita) {
@@ -58,6 +59,14 @@ public class Livro implements LivroReceitas {
 			}
 		}
 		return null;
+	}
+	
+	public double valorTotalReceitasSomadas(List<Receita> receitas){
+		valorTotalReceita = 0;
+		for (Receita receita: receitas){
+			valorTotalReceita += receita.calcularValorTotalReceita(receita.getIngredientes());
+		}
+		return valorTotalReceita;
 	}
 
 }
