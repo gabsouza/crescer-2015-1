@@ -6,10 +6,10 @@ public class IngredienteReceita {
 	private double quantidade;
 	private UnidadeMedida unidadeMedida;
 	
-	public IngredienteReceita(Ingrediente ingrediente, double qtd, UnidadeMedida unidade){
+	public IngredienteReceita(Ingrediente ingrediente, double quantidade, UnidadeMedida unidadeMedida){
 		this.ingrediente = ingrediente;
-		this.quantidade = qtd;
-		this.unidadeMedida = unidade;
+		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
 	}
 	
 	public Ingrediente getIngrediente(){
