@@ -4,25 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Livro implements LivroReceitas {
-	
-	private List<Receita> receitas = new ArrayList<>();
+	private List<Receita> receitas = new ArrayList<Receita>();
 
-	
-	public Livro (){
-		
-	}
-	
 	@Override
 	public void inserir(Receita receita) {
-		if (validaNome(receita.getNome(), receita)){
+		if (validaNome(receita.getNome(), receita)) {
 			receitas.add(receita);
 		}
-		
 	}
-	
-	public boolean validaNome (String nome, Receita receita){
-		if (receita != null){
-			if (receita.getNome() != null && !receita.getNome().trim().equals("")){
+
+	public boolean validaNome(String nome, Receita receita) {
+		if (receita != null) {
+			if (receita.getNome() != null
+					&& !receita.getNome().trim().equals("")) {
 				return true;
 			} else {
 				return false;
@@ -30,27 +24,26 @@ public class Livro implements LivroReceitas {
 		} else {
 			return false;
 		}
-		
+
 	}
 
 	@Override
 	public void atualizar(String nome, Receita receitaAtualizada) {
-		if (validaNome(nome, receitaAtualizada)){
-			excluir(nome);
-			receitas.add(receitaAtualizada);
+		if (validaNome(nome, receitaAtualizada)) {
+		for (Receita receita : receitas) {
+			if (receita.getNome() == receitaAtualizada.getNome()) {
+				receita = receitaAtualizada;
+			}
 		}
-		
-	}
+	}}
 
 	@Override
 	public void excluir(String nome) {
-		try {
-			Receita excluirReceita = buscaReceitaPeloNome(nome);
-			this.receitas.remove(excluirReceita);
-		} catch (ReceitaNaoEncontradaExcepcion e){
-			System.out.println(e);
+		for (Receita receita : receitas) {
+			if (receita.getNome() == nome) {
+				receitas.remove(receita);
+			}
 		}
-		
 	}
 
 	@Override
@@ -60,18 +53,11 @@ public class Livro implements LivroReceitas {
 
 	@Override
 	public Receita buscaReceitaPeloNome(String nome) {
-		try{
-			for (Receita receita: receitas){
-				if (receita.getNome().contains(nome)){
-					return receita;
-				}
+		for (Receita receita : receitas) {
+			if (receita.getNome() == nome) {
+				return receita;
 			}
 		}
-		catch (ReceitaNaoEncontradaExcepcion e){
-			System.out.println(e);
-			return null;
-		}
-				return null;
+		return null;
 	}
-
 }
