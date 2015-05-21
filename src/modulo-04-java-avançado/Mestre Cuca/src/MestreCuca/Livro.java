@@ -14,28 +14,25 @@ public class Livro implements LivroReceitas {
 	}
 
 	public boolean validaNome(String nome, Receita receita) {
-		if (receita != null) {
-			if (receita.getNome() != null
-					&& !receita.getNome().trim().equals("")) {
-				return true;
-			} else {
-				return false;
-			}
+		if (receita.getNome() != null && !receita.getNome().trim().equals("")
+				&& receita != null) {
+			return true;
 		} else {
-			return false;
+			throw new IllegalArgumentException(
+					"Nome de receita nulo ou inválido");
 		}
-
 	}
 
 	@Override
 	public void atualizar(String nome, Receita receitaAtualizada) {
 		if (validaNome(nome, receitaAtualizada)) {
-		for (Receita receita : receitas) {
-			if (receita.getNome() == receitaAtualizada.getNome()) {
-				receita = receitaAtualizada;
+			for (Receita receita : receitas) {
+				if (receita.getNome() == receitaAtualizada.getNome()) {
+					receita = receitaAtualizada;
+				}
 			}
 		}
-	}}
+	}
 
 	@Override
 	public void excluir(String nome) {
@@ -62,4 +59,5 @@ public class Livro implements LivroReceitas {
 		}
 		return null;
 	}
+
 }

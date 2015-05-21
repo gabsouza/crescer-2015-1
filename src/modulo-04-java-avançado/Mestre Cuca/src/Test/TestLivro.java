@@ -92,7 +92,7 @@ public class TestLivro {
 		
 	}
 	
-	@Test // nao funciona 
+	@Test
 	public void testExcluir() throws Exception{
 		Receita receita = new Receita ("Bolo");
 		Livro livro = new Livro();
