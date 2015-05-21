@@ -8,11 +8,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-
-
-
-
-
 import MestreCuca.Ingrediente;
 import MestreCuca.IngredienteReceita;
 import MestreCuca.Instrucao;
@@ -97,8 +92,30 @@ public class TestLivro {
 		
 	}
 	
+	@Test // nao funciona 
+	public void testExcluir() throws Exception{
+		Receita receita = new Receita ("Bolo");
+		Livro livro = new Livro();
 		
+		livro.inserir(receita);
+		assertEquals(1, livro.getTodasReceitas().size() );
+		
+		livro.excluir("Bolo");
+		List<Receita> esperado = new ArrayList<>();
+		assertEquals(esperado, livro.getTodasReceitas() );
+		assertEquals(0, livro.getTodasReceitas().size() );
+	}
 	
+	@Test
+	public void testBuscarReceitaPeloNome() throws Exception{
+		Receita receita = new Receita ("Sopa");
+		Livro livro = new Livro();
+		
+		livro.inserir(receita);
+		Receita resultado = livro.buscaReceitaPeloNome(receita.getNome());
+		assertEquals(receita, resultado);
+		
+	}
 	
 	
 	}

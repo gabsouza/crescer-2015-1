@@ -39,11 +39,13 @@ public class Livro implements LivroReceitas {
 
 	@Override
 	public void excluir(String nome) {
+		Receita receitaEncontrada = null;
 		for (Receita receita : receitas) {
-			if (receita.getNome() == nome) {
-				receitas.remove(receita);
+			if (receita.getNome().equals(nome)) {
+				receitaEncontrada = receita;
 			}
 		}
+		receitas.remove(receitaEncontrada);
 	}
 
 	@Override
@@ -54,7 +56,7 @@ public class Livro implements LivroReceitas {
 	@Override
 	public Receita buscaReceitaPeloNome(String nome) {
 		for (Receita receita : receitas) {
-			if (receita.getNome() == nome) {
+			if (receita.getNome().equals(nome)) {
 				return receita;
 			}
 		}
