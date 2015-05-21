@@ -55,10 +55,9 @@ public class TestLivro {
 		Instrucao instrucao2 = new Instrucao("Bata a massa");
 		Ingrediente ovo = new Ingrediente("Ovo", 0.30);
 		Ingrediente leite = new Ingrediente("leite", 2.00);
-		IngredienteReceita ingrediente1 = new IngredienteReceita(ovo, 6.00, 
-														UnidadeMedida.UNIDADE);
-		IngredienteReceita ingrediente2 = new IngredienteReceita(leite, 2.00, 
-														UnidadeMedida.XICARA);
+		IngredienteReceita ingrediente1 = new IngredienteReceita(ovo, 6.00, UnidadeMedida.UNIDADE);
+		IngredienteReceita ingrediente2 = new IngredienteReceita(leite, 2.00, UnidadeMedida.XICARA);
+		
 		List<IngredienteReceita> ingredientes = new ArrayList<>();
 		ingredientes.add(ingrediente1);
 		ingredientes.add(ingrediente2);
@@ -67,12 +66,33 @@ public class TestLivro {
 		instrucao.add(instrucao1);
 		instrucao.add(instrucao2);
 		
-		String receitaAntiga = "Bolo de Chocolate";
+		String receitaAntiga = "Bolo";
 		
 		Receita receita = new Receita(receitaAntiga, ingredientes, instrucao);
+		
+		Instrucao instrucaonova1 = new Instrucao("Separe a clara da gema antes de misturar os ingredientes");
+		Instrucao instrucaonova2 = new Instrucao("Bata tudo em uma batedeira");
+		Ingrediente chocolate = new Ingrediente ("Chocolate", 5.00);
+		Ingrediente farinha = new Ingrediente ("Farinha", 2.00);
+		IngredienteReceita ingredienteChocolate = new IngredienteReceita (chocolate, 0.100, UnidadeMedida.GRAMA);
+		IngredienteReceita ingredienteFarinha = new IngredienteReceita (farinha, 0.400, UnidadeMedida.GRAMA);
+		
+		
+		List<IngredienteReceita> ingredientesNovos = new ArrayList<>();
+		ingredientesNovos.add(ingredienteChocolate);
+		ingredientesNovos.add(ingredienteFarinha);
+		
+		List<Instrucao> instrucaoNova = new ArrayList<>();
+		instrucaoNova.add(instrucaonova1);
+		instrucaoNova.add(instrucaonova2);
+		
+		String receitaNova = "Bolo de Chocolate";
+		
+		Receita receita2 = new Receita (receitaNova, ingredientesNovos, instrucaoNova);
 		Livro livro = new Livro();
 
 		livro.inserir(receita);
+		livro.atualizar("Bolo", receita2);
 		assertEquals(receita, livro.getTodasReceitas().get(0) );
 		
 	}

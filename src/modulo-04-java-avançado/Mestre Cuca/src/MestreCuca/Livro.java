@@ -36,8 +36,8 @@ public class Livro implements LivroReceitas {
 	@Override
 	public void atualizar(String nome, Receita receitaAtualizada) {
 		if (validaNome(nome, receitaAtualizada)){
-			excluir(nome);
-			receitas.add(receitaAtualizada);
+			receitas.set(receitas.indexOf(buscaReceitaPeloNome(nome)),
+					receitaAtualizada);
 		}
 		
 	}
