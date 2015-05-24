@@ -1,4 +1,4 @@
-package MestreCuca;
+package mestrecuca;
 
 import java.util.ArrayList;
 import java.util.List;

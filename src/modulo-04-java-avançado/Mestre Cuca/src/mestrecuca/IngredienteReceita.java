@@ -1,4 +1,4 @@
-package MestreCuca;
+package mestrecuca;
 
 public class IngredienteReceita {
 	

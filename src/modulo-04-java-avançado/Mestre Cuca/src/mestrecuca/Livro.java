@@ -1,10 +1,10 @@
-package MestreCuca;
+package mestrecuca;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Livro implements LivroReceitas {
-	private List<Receita> receitas = new ArrayList<Receita>();
+	private List<Receita> receitas = new ArrayList<>();
 	private double valorTotalReceita;
 
 	@Override
@@ -28,7 +28,7 @@ public class Livro implements LivroReceitas {
 	public void atualizar(String nome, Receita receitaAtualizada) {
 		if (validaNome(nome, receitaAtualizada)) {
 			for (Receita receita : receitas) {
-				if (receita.getNome() == receitaAtualizada.getNome()) {
+				if (receita.getNome().equals(receitaAtualizada.getNome())) {
 					receita = receitaAtualizada;
 				}
 			}
@@ -60,13 +60,27 @@ public class Livro implements LivroReceitas {
 		}
 		return null;
 	}
-	
-	public double valorTotalReceitasSomadas(List<Receita> receitas){
+
+	public double valorTotalReceitasSomadas(List<Receita> receitas) {
 		valorTotalReceita = 0;
-		for (Receita receita: receitas){
-			valorTotalReceita += receita.calcularValorTotalReceita(receita.getIngredientes());
+		for (Receita receita : receitas) {
+			valorTotalReceita += receita.calcularValorTotalReceita(receita
+					.getIngredientes());
 		}
 		return valorTotalReceita;
 	}
 
-}
+	// nao esta pronto
+	public List<Receita> protecaoAlergicos(List<String> ingredientesProibidos, List<IngredienteReceita> ingredientes){
+			List<Receita> receitasAlergicos = new ArrayList<>();
+			for(Receita receita: receitas){
+				for (IngredienteReceita ingrediente: ingredientes){
+					if (receita.contains(ingredientesProibidos)){
+						((Livro) receitasAlergicos).inserir(receita);
+						
+					}
+				}
+			return receitasAlergicos;
+		}
+
+}}

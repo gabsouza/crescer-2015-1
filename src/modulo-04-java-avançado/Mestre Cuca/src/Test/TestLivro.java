@@ -4,16 +4,16 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import mestrecuca.Ingrediente;
+import mestrecuca.IngredienteReceita;
+import mestrecuca.Instrucao;
+import mestrecuca.Livro;
+import mestrecuca.Receita;
+import mestrecuca.UnidadeMedida;
+
 import org.junit.Test;
 
 import java.util.List;
-
-import MestreCuca.Ingrediente;
-import MestreCuca.IngredienteReceita;
-import MestreCuca.Instrucao;
-import MestreCuca.Livro;
-import MestreCuca.Receita;
-import MestreCuca.UnidadeMedida;
 
 public class TestLivro {
 	

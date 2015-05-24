@@ -1,4 +1,4 @@
-package MestreCuca;
+package mestrecuca;
 
 public class Ingrediente {
 	private String nome;
@@ -20,6 +20,12 @@ public class Ingrediente {
 
 	public double getValor() {
 		return valor;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Ingrediente outro = (Ingrediente) obj;
+		return this.getNome() == outro.getNome() ? true: false;
 	}
 	
 }

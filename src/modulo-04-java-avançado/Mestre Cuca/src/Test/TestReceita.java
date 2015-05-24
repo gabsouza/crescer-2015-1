@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import mestrecuca.Ingrediente;
+import mestrecuca.IngredienteReceita;
+import mestrecuca.Instrucao;
+import mestrecuca.Livro;
+import mestrecuca.Receita;
+import mestrecuca.UnidadeMedida;
 
-import MestreCuca.Ingrediente;
-import MestreCuca.IngredienteReceita;
-import MestreCuca.Instrucao;
-import MestreCuca.Livro;
-import MestreCuca.Receita;
-import MestreCuca.UnidadeMedida;
+import org.junit.Test;
 
 public class TestReceita {
 	
