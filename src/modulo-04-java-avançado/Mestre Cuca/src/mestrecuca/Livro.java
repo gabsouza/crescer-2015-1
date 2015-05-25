@@ -69,18 +69,14 @@ public class Livro implements LivroReceitas {
 		}
 		return valorTotalReceita;
 	}
-
-	// nao esta pronto
-	public List<Receita> protecaoAlergicos(List<String> ingredientesProibidos, List<IngredienteReceita> ingredientes){
-			List<Receita> receitasAlergicos = new ArrayList<>();
-			for(Receita receita: receitas){
-				for (IngredienteReceita ingrediente: ingredientes){
-					if (receita.contains(ingredientesProibidos)){
-						((Livro) receitasAlergicos).inserir(receita);
-						
-					}
-				}
-			return receitasAlergicos;
+	
+	public List<Receita> protecaoAlergicos(List<String> ingredientesProibidos){
+		List<Receita> receitasAlergicos = new ArrayList<>();
+		for (Receita receita : receitas) {
+				if (!receita.contemIngredienteProibido(ingredientesProibidos)) {
+					receitasAlergicos.add (receita);
+			}
 		}
-
-}}
+	return receitasAlergicos;
+	}
+}

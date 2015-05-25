@@ -7,11 +7,11 @@ import java.util.List;
 public class Receita {
 	
 	private String nome;
-	private List<IngredienteReceita> ingredientes = new ArrayList<>();
+	private List<Ingrediente> ingredientes = new ArrayList<>();
 	private List<Instrucao> instrucao = new ArrayList<Instrucao>();
 	private double valorTotal;
 
-	public Receita(String nome, List<IngredienteReceita> ingredientes, List<Instrucao> instrucao) {		
+	public Receita(String nome, List<Ingrediente> ingredientes, List<Instrucao> instrucao) {		
 		this.nome = nome;
 		this.ingredientes = ingredientes;
 		this.instrucao = instrucao;
@@ -30,21 +30,31 @@ public class Receita {
 		this.nome = nome;
 	}
 
-	public List<IngredienteReceita> getIngredientes(){
+	public List<Ingrediente> getIngredientes(){
 			return ingredientes;
 	}	
 	public List<Instrucao> getInstrucao(){
 		return instrucao;
 	}
 	
-	public double calcularValorTotalReceita (List<IngredienteReceita> ingredientes){
+	public double calcularValorTotalReceita (List<Ingrediente> ingredientes){
 		valorTotal = 0;
-		for (IngredienteReceita ingrediente: ingredientes ){
-			valorTotal += ingrediente.getIngrediente().getValor();
+		for (Ingrediente ingrediente: ingredientes ){
+			valorTotal += ingrediente.getValor();
 		}
 		return valorTotal;
 			
 		}
+
+	public boolean contemIngredienteProibido(List<String> ingredientesProibidos){
+		for (Ingrediente ingrediente: ingredientes){
+			if (ingredientesProibidos.contains(ingrediente.getNome())){
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 
 }
