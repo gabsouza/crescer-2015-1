@@ -108,6 +108,24 @@ public class TestLivro {
 		
 	}
 	
+	@Test
+	public void testProtecaoAlergicos(){
+		Ingrediente ingredienteChocolate = new Ingrediente ("chocolate", 0.100, UnidadeMedida.GRAMA);
+		Ingrediente ingredienteFarinha = new Ingrediente ("farinha", 0.400, UnidadeMedida.GRAMA);
+		Receita receitaSem = new Receita("Cupcake",ingredienteChocolate,  );
+		Receita receitaCom = new Receita("Cupcake do mal");
+		Livro livro = new Livro();
+		
+		livro.inserir(receitaSem);
+		livro.inserir(receitaCom);
+		
+		protecaoAlergicos
+		
+		assertEquals();
+		
+		
+	}
+	
 	
 	}
 

@@ -1,29 +1,42 @@
 <!doctype>
-
+<html lang="en">
 <html>
 
-	<head>
-		<title> Filmator </title>
-		<meta charset = "utf-8">
-	</head>
-	
-	<body bgcolor = "#E0E0E0">
-		<marquee><img src="/img/dogao.gif"></marquee>
-		
-		<ul>
-			{{#filmes}}
-			<li>{{nome}}</li>
-			{{/filmes}}
-		</ul>
-		
-		<h1> Cadastro de Filmes:</h1>
-		<form action = "/salvar" method = "POST">
-				<label> Nome: </label>
-				<input name = "nome">
-				
-				<button>Salvar</button>
-			
-			
-		</form>
-	</body>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Filmator</title>
+
+<style>
+*, body {
+	margin: 0;
+}
+</style>
+</head>
+
+<body">
+
+	<ul>
+		{{#filmes}}
+		<li>{{nome}}</li> {{/filmes}}
+	</ul>
+
+	<h1> Cadastro</h1>
+	<form action="/inserir" method="POST">
+		<label>Nome</label> <input type="text" name="nome">
+		<label>Nome</label> <input type="text" name="nome">
+	</form>
+
+	<form action="/salvar" method="POST">
+		<label> Nome: </label> <input name="nome">
+
+		<button>Salvar</button>
+
+
+	</form>
+</body>
 </html>
