@@ -17,11 +17,16 @@ public class Receita {
 		this.instrucao = instrucao;
 		this.valorTotal = calcularValorTotalReceita(ingredientes);
 	}
+	
+	public Receita(String nome, List<Ingrediente> ingredientes) {
+		this.nome = nome;
+		this.ingredientes = ingredientes;
+	}
 
 	public Receita(String nome) {
 		this.nome = nome;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}

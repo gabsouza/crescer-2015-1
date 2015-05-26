@@ -21,28 +21,30 @@ public class HomeController {
 	
 	@Inject 
 	private FilmeDao filmeDao;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("mensagem", "fulano de tal");
-		model.addAttribute("millisegundos", System.currentTimeMillis());
-		model.addAttribute("filmes",  new ArrayList<>());
-		return "nomeDoArquivo";
+		return "home";
 	}
 	
+//	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+//	public String cadastraFilme() {		
+//		return "cadastroFilmes";
+//	}
+//	
+//	@ResponseBody //@ResponseBody faz transformar o retorno para JSON!
+//	@RequestMapping(value = "/buscarTodos", method = RequestMethod.GET)
+//	public List<Filme> buscarTodos(Model model) {
+//		return filmeDao.buscaTodosFilmesJava8();
+//	}
+//	
+//	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
+//	public String inserir(Model model, Filme filme) {
+//		filmeDao.inserir(filme);
+//		model.addAttribute("filmes", filmeDao.buscaTodosFilmesJava8());
+//		model.addAttribute("mensagem", "Filme inserido com sucesso!");
+//		return "cadastroFilmes";
+//	}
 	
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public String inserir(Model model, Filme filme) {
-		filmeDao.inserir(filme);
-		model.addAttribute("filmes", filmeDao.buscaTodosFilmesJava8());
-		model.addAttribute("mensagem", "Filme inserido com sucesso!");
-		return "nomeDoArquivo";
-	}
-	
-	@ResponseBody //@ResponseBody faz transformar o retorno para JSON!
-	@RequestMapping(value = "/buscarTodos", method = RequestMethod.GET)
-	public List<Filme> buscarTodos(Model model) {
-		return filmeDao.buscaTodosFilmesJava8();
-	}
 	
 }

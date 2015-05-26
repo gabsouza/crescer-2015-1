@@ -112,14 +112,24 @@ public class TestLivro {
 	public void testProtecaoAlergicos(){
 		Ingrediente ingredienteChocolate = new Ingrediente ("chocolate", 0.100, UnidadeMedida.GRAMA);
 		Ingrediente ingredienteFarinha = new Ingrediente ("farinha", 0.400, UnidadeMedida.GRAMA);
-		Receita receitaSem = new Receita("Cupcake",ingredienteChocolate,  );
+		Ingrediente castanha = new Ingrediente("castanha", 3, UnidadeMedida.UNIDADE);
+		
+		List<Ingrediente> ingredientesSem = new ArrayList<>();
+		ingredientesSem.add(ingredienteChocolate);
+		ingredientesSem.add(ingredienteFarinha);
+		
+		List<Ingrediente> ingredientesCom = new ArrayList<>();
+		ingredientesCom.add(ingredienteChocolate);
+		ingredientesCom.add(ingredienteFarinha);
+		ingredientesCom.add(castanha);
+		
+		
+		Receita receitaSem = new Receita ("Sopa", ingredientesSem);
 		Receita receitaCom = new Receita("Cupcake do mal");
 		Livro livro = new Livro();
 		
 		livro.inserir(receitaSem);
 		livro.inserir(receitaCom);
-		
-		protecaoAlergicos
 		
 		assertEquals();
 		
