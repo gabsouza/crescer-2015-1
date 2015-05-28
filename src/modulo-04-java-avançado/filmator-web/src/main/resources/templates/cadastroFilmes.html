@@ -1,28 +1,76 @@
-<!doctype>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
-	<title>Cadastro de Filmes</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
+<title>Filmator</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/login.css" rel="stylesheet">
+<link href="css/grayscale.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	{{>navegacao}}
+	<!-- Cadastro Section -->
+	<section id="Cadastro" class="content-section text-center">
+		<div class="download-section">
+			<div class="container">
+				<div class="col-lg-8 col-lg-offset-2">
+					<h2>Cadastro de Filmes</h2>
+					<p>Você pode cadastrar seus filmes favoritos!</p>
 
-	 <h1>{{mensagem}}</h1>
+					<form role="form" action="/cadastrarFilme" method="POST">
+						<div class="form-group">
+							<input type="text" class="form-control" name="nome"
+								placeholder="Nome do Filme">
+						</div>
+						<div class="form-group">
+							<input type="number" class="form-control" name="anolancamento"
+								placeholder="Ano de lançamento">
+						</div>
+						<div class="form-group">
+							<textarea type="text" class="form-control" name="sinopse"
+								rows "10" placeholder="Sinopse"></textarea>
+						</div>
 
-<h1>Cadastro de Filme</h1>
-	<form action="/inserir" method="POST">
-		<label>Nome</label> <input type="text" name="nome">
-		<label>Genero</label> <input type="text" name="Genero">
-		<label>Sinopse</label> <input type="text" name="nome">
-		<button>Salvar</button>
-	</form>
-	
-	
-	
+						<div class="form-group">
+							<input type="url" class="form-control" name="imagem"
+								placeholder="url de uma imagem">
+						</div>
+
+						<div class="form-group">
+							<select class="form-control" name="genero"> {{#generos}}
+								<option value="{{.}}">{{descricao}}</option> {{/generos}}
+							</select>
+						</div>
+
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 
 </body>
-
 </html>

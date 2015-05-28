@@ -12,6 +12,7 @@ public enum Genero {
 	SUSPENSE ("Suspense"), 
 	TERROR ("Terror"), 
 	TRASH ("Trash");
+	
 	private String descricao;
 	
 	private Genero(String descricao) {

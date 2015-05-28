@@ -1,5 +1,4 @@
-package filmator.dao; //marlon loco batati e bata
-
+package filmator.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,33 +24,37 @@ import filmator.model.Filme;
 @Component
 public class FilmeDao {
 
-	
 	@Inject
 	private JdbcTemplate jdbcTemplate;
-	
 
-	public void inserir(Filme filme){
-		jdbcTemplate.update("INSERT INTO Filme (nome) VALUES (?)", filme.getNome());
+	public void inserir(Filme filme) {
+		jdbcTemplate
+				.update("INSERT INTO Filme (nome, anoLancamento, sinopse, url, genero) VALUES (?, ?, ?, ?, ?)",
+						filme.getNome(), filme.getAnoLancamento(), filme
+								.getSinopse(), filme.getImagem(), filme
+								.getGenero().getDescricao());
 	}
-	
-	public List<Filme> buscaTodosFilmes(){
 
-		return jdbcTemplate.query("SELECT nome FROM Filme", new RowMapper<Filme>(){
-			@Override
-			public Filme mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Filme filme = new Filme(rs.getString("nome"));
-				return filme;
-			}
-		});
+	public List<Filme> buscaTodosFilmes() {
+
+		return jdbcTemplate.query("SELECT nome FROM Filme",
+				new RowMapper<Filme>() {
+					@Override
+					public Filme mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						Filme filme = new Filme(rs.getString("nome"));
+						return filme;
+					}
+				});
 	}
-	
-	public List<Filme> buscaTodosFilmesJava8(){
-		return jdbcTemplate.query("SELECT nome FROM Filme", (ResultSet rs, int rowNum) -> {	
+
+	public List<Filme> buscaTodosFilmesJava8() {
+		return jdbcTemplate.query("SELECT nome FROM Filme", (ResultSet rs,
+				int rowNum) -> {
 			Filme filme = new Filme(rs.getString("nome"));
 			return filme;
 		});
-		
-		
+
 	}
-	
+
 }

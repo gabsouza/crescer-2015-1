@@ -9,18 +9,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import filmator.dao.FilmeDao;
 import filmator.model.Filme;
+import filmator.model.Genero;
 
 @Controller
 public class CadastroController {
 
 	@Inject
 	FilmeDao filmeDao;
+
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	public String cadastro(Model model) {
+		model.addAttribute("generos", Genero.values());
+		return "cadastroFilmes";
+	}
 	
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST) 
-	  public String inserir(Model model, Filme filme){
-	    model.addAttribute("filmes", filmeDao.buscaTodosFilmesJava8());
-	    model.addAttribute("mensagem", "Filme inserido com sucesso!");
-	    return "home";
-	  }
+	@RequestMapping(value = "/cadastrarFilme", method = RequestMethod.POST)
+	public String cadastro(Model model, Filme filme) {
+		filmeDao.inserir(filme);
+		return "cadastroFilmes";
+	}
 
 }
