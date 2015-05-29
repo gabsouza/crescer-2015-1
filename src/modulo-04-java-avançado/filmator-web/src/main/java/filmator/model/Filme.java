@@ -4,7 +4,7 @@ public class Filme {
 
 	private int id;
 	private String nome;
-	private int anoLancamento;
+	private int anolancamento;
 	private String sinopse;
 	private String imagem;
 	private Genero genero;
@@ -33,12 +33,12 @@ public class Filme {
 		this.nome = nome;
 	}
 
-	public int getAnoLancamento() {
-		return anoLancamento;
+	public int getAnolancamento() {
+		return anolancamento;
 	}
 
-	public void setAnoLancamento(int anoLancamento) {
-		this.anoLancamento = anoLancamento;
+	public void setAnolancamento(int anolancamento) {
+		this.anolancamento = anolancamento;
 	}
 
 	public String getSinopse() {

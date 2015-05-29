@@ -29,8 +29,8 @@ public class FilmeDao {
 
 	public void inserir(Filme filme) {
 		jdbcTemplate
-				.update("INSERT INTO Filme (nome, anoLancamento, sinopse, url, genero) VALUES (?, ?, ?, ?, ?)",
-						filme.getNome(), filme.getAnoLancamento(), filme
+				.update("INSERT INTO Filme (nome, anolancamento, sinopse, imagem, genero) VALUES (?, ?, ?, ?, ?)",
+						filme.getNome(), filme.getAnolancamento(), filme
 								.getSinopse(), filme.getImagem(), filme
 								.getGenero().getDescricao());
 	}

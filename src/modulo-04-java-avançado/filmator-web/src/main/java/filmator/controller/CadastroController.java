@@ -22,7 +22,7 @@ public class CadastroController {
 		model.addAttribute("generos", Genero.values());
 		return "cadastroFilmes";
 	}
-	
+
 	@RequestMapping(value = "/cadastrarFilme", method = RequestMethod.POST)
 	public String cadastro(Model model, Filme filme) {
 		filmeDao.inserir(filme);

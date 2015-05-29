@@ -37,36 +37,30 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2">
 				<h2>Login</h2>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="pr-wrap"></div>
-							<div class="wrap">
-								<form class="login">
-									<div>
-										<input type="text" placeholder="Username" />
-									</div>
-									<input type="password" placeholder="Password" /> <input
-										type="submit" value="Sign In" class="btn btn-success btn-sm" />
-									<div class="remember-forgot">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="checkbox">
-													<label> <input type="checkbox" /> Lembre-me
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6 forgot-pass-content">
-												<a href="javascription:void(0)" class="forgot-pass">Esqueceu
-													a senha?</a>
-											</div>
-										</div>
-									</div>
-								</form>
+				<form class="login" action="/login" method="POST">
+					<div>
+						<input type="text" placeholder="Nome de usuário"/>
+					</div>
+					<input type="password" placeholder="Senha"/> <input type="submit"
+						value="Entrar" class="btn btn-success btn-sm"/>
+					<div class="remember-forgot">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="checkbox">
+									<label> <input type="checkbox"/> Lembre-me
+									</label>
+								</div>
+							</div>
+							<div class="col-md-6 forgot-pass-content">
+								<a href="javascription:void(0)" class="forgot-pass">Esqueceu
+									a senha?</a>
+							</div>
+							<div >
+								<a href="/cadastroUsuario">Ainda não tem uma conta?</a>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</section>
