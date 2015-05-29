@@ -17,13 +17,13 @@ public class CadastroController {
 	@Inject
 	FilmeDao filmeDao;
 
-	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	@RequestMapping(value = "/cadastroFilme", method = RequestMethod.GET)
 	public String cadastro(Model model) {
 		model.addAttribute("generos", Genero.values());
 		return "cadastroFilmes";
 	}
 
-	@RequestMapping(value = "/cadastrarFilme", method = RequestMethod.POST)
+	@RequestMapping(value = "/cadastroFilme", method = RequestMethod.POST)
 	public String cadastro(Model model, Filme filme) {
 		filmeDao.inserir(filme);
 		return "cadastroFilmes";

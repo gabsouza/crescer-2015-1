@@ -8,10 +8,12 @@ import javax.inject.Inject;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import filmator.model.Filme;
 import filmator.model.Usuario;
 
+@Component
 public class UsuarioDao {
 
 	@Inject
